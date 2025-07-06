@@ -58,7 +58,7 @@ public class MyTestCases {
 		int randomNumberForEmail = rand.nextInt(6000);
 		String email = randomFirstName + randomLastName + randomNumberForEmail + "@gmail.com";
 		
-		// marwan 
+		 
 
 		String telphone = "454546545";
 		String fax = "454546544";
