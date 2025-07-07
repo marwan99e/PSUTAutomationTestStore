@@ -80,14 +80,20 @@ public class MyTestCases {
 		Address2Input.sendKeys(address2);
 		CityInput.sendKeys(city);
 
+		
+		int numberOfOptions = CountrySelect.findElements(By.tagName("option")).size();
 		Select mySelectForTheCountry = new Select(CountrySelect);
-		mySelectForTheCountry.selectByVisibleText("Jordan");
+		int randomeCountryIndex = rand.nextInt(1, numberOfOptions);
+		mySelectForTheCountry.selectByIndex(randomeCountryIndex);
 
+		
+		
+		
 		Thread.sleep(1000);
 
-		int numberOfOptions = StateSelect.findElements(By.tagName("option")).size();
+		int numberOfOptionss = StateSelect.findElements(By.tagName("option")).size();
 		Select mySelectForTheState = new Select(StateSelect);
-		int randomeStateIndex = rand.nextInt(1, numberOfOptions);
+		int randomeStateIndex = rand.nextInt(1, numberOfOptionss);
 		mySelectForTheState.selectByIndex(randomeStateIndex);
 
 		PostalCodeInput.sendKeys(postalcode);
