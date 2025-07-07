@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
@@ -24,7 +25,7 @@ public class MyTestCases {
 	}
 
 	@Test(priority = 1)
-	public void Signup() {
+	public void Signup() throws InterruptedException {
 
 		driver.navigate().to(SignupPage);
 		// Element
@@ -41,24 +42,23 @@ public class MyTestCases {
 		WebElement loginNameInput = driver.findElement(By.id("AccountFrm_loginname"));
 		WebElement passwordInput = driver.findElement(By.id("AccountFrm_password"));
 		WebElement passwordConfirmInput = driver.findElement(By.id("AccountFrm_confirm"));
+		WebElement agreebox = driver.findElement(By.id("AccountFrm_agree"));
+		WebElement ContinueButton = driver.findElement(By.cssSelector(".btn.btn-orange.pull-right.lock-on-click"));
+		WebElement CountrySelect = driver.findElement(By.id("AccountFrm_country_id"));
+		WebElement StateSelect = driver.findElement(By.id("AccountFrm_zone_id"));
 
 		// Data
 
 		String[] firstNames = { "Ahmad", "Marwan", "Samer", "Sami" };
 		int randomIndexForFirstName = rand.nextInt(firstNames.length);
 		String randomFirstName = firstNames[randomIndexForFirstName];
-		
-		
+
 		String[] LastNames = { "eslam", "esraa", "rahaf", "rema" };
 		int randomIndexForLasttName = rand.nextInt(LastNames.length);
 		String randomLastName = firstNames[randomIndexForLasttName];
-		
-		
 
 		int randomNumberForEmail = rand.nextInt(6000);
 		String email = randomFirstName + randomLastName + randomNumberForEmail + "@gmail.com";
-		
-		 
 
 		String telphone = "454546545";
 		String fax = "454546544";
@@ -79,11 +79,23 @@ public class MyTestCases {
 		Address1Input.sendKeys(address1);
 		Address2Input.sendKeys(address2);
 		CityInput.sendKeys(city);
+
+		Select mySelectForTheCountry = new Select(CountrySelect);
+		mySelectForTheCountry.selectByVisibleText("Jordan");
+
+		Thread.sleep(1000);
+
+		int numberOfOptions = StateSelect.findElements(By.tagName("option")).size();
+		Select mySelectForTheState = new Select(StateSelect);
+		int randomeStateIndex = rand.nextInt(1, numberOfOptions);
+		mySelectForTheState.selectByIndex(randomeStateIndex);
+
 		PostalCodeInput.sendKeys(postalcode);
 		loginNameInput.sendKeys(randomFirstName + randomLastName + randomNumberForEmail);
 		passwordInput.sendKeys(password);
 		passwordConfirmInput.sendKeys(password);
-
+		agreebox.click();
+		ContinueButton.click();
 	}
 
 }
