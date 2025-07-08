@@ -44,8 +44,8 @@ public class MyTestCases {
 		WebElement passwordConfirmInput = driver.findElement(By.id("AccountFrm_confirm"));
 		WebElement agreebox = driver.findElement(By.id("AccountFrm_agree"));
 		WebElement ContinueButton = driver.findElement(By.cssSelector(".btn.btn-orange.pull-right.lock-on-click"));
-		WebElement CountrySelect = driver.findElement(By.id("AccountFrm_country_id"));
-		WebElement StateSelect = driver.findElement(By.id("AccountFrm_zone_id"));
+		WebElement CountrySelectInput = driver.findElement(By.id("AccountFrm_country_id"));
+		WebElement StateSelectInput = driver.findElement(By.id("AccountFrm_zone_id"));
 
 		// Data
 
@@ -81,18 +81,16 @@ public class MyTestCases {
 		CityInput.sendKeys(city);
 
 		
-		int numberOfOptions = CountrySelect.findElements(By.tagName("option")).size();
-		Select mySelectForTheCountry = new Select(CountrySelect);
+		int numberOfOptions = CountrySelectInput.findElements(By.tagName("option")).size();
+		Select mySelectForTheCountry = new Select(CountrySelectInput);
 		int randomeCountryIndex = rand.nextInt(1, numberOfOptions);
 		mySelectForTheCountry.selectByIndex(randomeCountryIndex);
 
 		
-		
-		
 		Thread.sleep(1000);
 
-		int numberOfOptionss = StateSelect.findElements(By.tagName("option")).size();
-		Select mySelectForTheState = new Select(StateSelect);
+		int numberOfOptionss = StateSelectInput.findElements(By.tagName("option")).size();
+		Select mySelectForTheState = new Select(StateSelectInput);
 		int randomeStateIndex = rand.nextInt(1, numberOfOptionss);
 		mySelectForTheState.selectByIndex(randomeStateIndex);
 
