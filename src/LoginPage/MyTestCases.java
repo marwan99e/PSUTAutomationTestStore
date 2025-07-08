@@ -81,19 +81,22 @@ public class MyTestCases {
 		CityInput.sendKeys(city);
 
 		
-		int numberOfOptions = CountrySelectInput.findElements(By.tagName("option")).size();
-		Select mySelectForTheCountry = new Select(CountrySelectInput);
-		int randomeCountryIndex = rand.nextInt(1, numberOfOptions);
-		mySelectForTheCountry.selectByIndex(randomeCountryIndex);
+		//CountrySelect
+		Select countrySelect = new Select(CountrySelectInput);
+		int CountryOptionsCount = countrySelect.getOptions().size();
+		int CountryrandomIndex = new Random().nextInt(1, CountryOptionsCount);
+		countrySelect.selectByIndex(CountryrandomIndex);
 
 		
 		Thread.sleep(1000);
+		
+		//StateSelect
+		Select stateSelect = new Select(StateSelectInput);
+		int StateoptionsCount = stateSelect.getOptions().size();
+		int StaterandomIndex = new Random().nextInt(1, StateoptionsCount);
+		stateSelect.selectByIndex(StaterandomIndex);
 
-		int numberOfOptionss = StateSelectInput.findElements(By.tagName("option")).size();
-		Select mySelectForTheState = new Select(StateSelectInput);
-		int randomeStateIndex = rand.nextInt(1, numberOfOptionss);
-		mySelectForTheState.selectByIndex(randomeStateIndex);
-
+		
 		PostalCodeInput.sendKeys(postalcode);
 		loginNameInput.sendKeys(randomFirstName + randomLastName + randomNumberForEmail);
 		passwordInput.sendKeys(password);
