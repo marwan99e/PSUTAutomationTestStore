@@ -6,7 +6,7 @@
       <class name="LoginPage.MyTestCases">
         <methods>
           <include name="mySetup"/>
-          <include name="Signup"/>
+          <include name="login"/>
         </methods>
       </class> <!-- LoginPage.MyTestCases -->
     </classes>

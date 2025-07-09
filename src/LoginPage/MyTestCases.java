@@ -1,20 +1,23 @@
 package LoginPage;
 
+import java.util.List;
 import java.util.Random;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 public class MyTestCases {
-	WebDriver driver = new EdgeDriver();
+	WebDriver driver = new ChromeDriver();
 	String theURL = "https://automationteststore.com/";
 	String SignupPage = "https://automationteststore.com/index.php?rt=account/create";
 	Random rand = new Random();
+	String TheUserName;
+	String ThePassword = "TestStore@123";
 
 	@BeforeTest
 	public void mySetup() {
@@ -24,7 +27,7 @@ public class MyTestCases {
 
 	}
 
-	@Test(priority = 1)
+	@Test(priority = 1, enabled = true)
 	public void Signup() throws InterruptedException {
 
 		driver.navigate().to(SignupPage);
@@ -67,9 +70,11 @@ public class MyTestCases {
 		String address2 = "amman";
 		String city = "amman";
 		String postalcode = "2545";
-		String password = "TestStore@123";
 
 		// Action
+
+		TheUserName = randomFirstName + randomLastName + randomNumberForEmail;
+
 		firstNameInput.sendKeys(randomFirstName);
 		LastNameInput.sendKeys(randomLastName);
 		EmailInput.sendKeys(email);
@@ -80,29 +85,72 @@ public class MyTestCases {
 		Address2Input.sendKeys(address2);
 		CityInput.sendKeys(city);
 
-		
-		//CountrySelect
+		// CountrySelect
+
 		Select countrySelect = new Select(CountrySelectInput);
 		int CountryOptionsCount = countrySelect.getOptions().size();
 		int CountryrandomIndex = new Random().nextInt(1, CountryOptionsCount);
 		countrySelect.selectByIndex(CountryrandomIndex);
 
-		
 		Thread.sleep(1000);
-		
-		//StateSelect
+
+		// StateSelect
+
 		Select stateSelect = new Select(StateSelectInput);
 		int StateoptionsCount = stateSelect.getOptions().size();
 		int StaterandomIndex = new Random().nextInt(1, StateoptionsCount);
 		stateSelect.selectByIndex(StaterandomIndex);
 
-		
 		PostalCodeInput.sendKeys(postalcode);
-		loginNameInput.sendKeys(randomFirstName + randomLastName + randomNumberForEmail);
-		passwordInput.sendKeys(password);
-		passwordConfirmInput.sendKeys(password);
+		loginNameInput.sendKeys(TheUserName);
+		passwordInput.sendKeys(ThePassword);
+		passwordConfirmInput.sendKeys(ThePassword);
 		agreebox.click();
 		ContinueButton.click();
+	}
+
+	@Test(priority = 2, enabled = true)
+	public void logout() {
+
+		WebElement logoutInput = driver.findElement(By.linkText("Logoff"));
+
+		logoutInput.click();
+	}
+
+	@Test(priority = 3, enabled = true)
+	public void login() {
+
+		driver.navigate().to("https://automationteststore.com/index.php?rt=account/login");
+		WebElement loginName = driver.findElement(By.id("loginFrm_loginname"));
+		WebElement password = driver.findElement(By.id("loginFrm_password"));
+		loginName.sendKeys(TheUserName);
+		password.sendKeys(ThePassword);
+
+		WebElement logInButton = driver.findElement(By.xpath("//button[normalize-space()='Login']"));
+		logInButton.click();
+
+	}
+
+	@Test(priority = 4, enabled = true,invocationCount = 10)
+	public void AddToCard() {
+
+		driver.navigate().to(theURL);
+		List<WebElement> TheListOfItem = driver.findElements(By.className("prdocutname"));
+		int TotleNunberOfItems = TheListOfItem.size();
+		int RandomItemIndex = rand.nextInt(TotleNunberOfItems);
+		TheListOfItem.get(RandomItemIndex).click();
+		if (driver.getPageSource().contains("Out of Stock")) {
+			driver.navigate().back();
+			System.out.println("Sorry the item out of stock");
+		}else {
+			System.out.println("the item is  avaibale");
+		}
+		
+		
+		
+		
+		
+
 	}
 
 }
