@@ -1,68 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="13" passed="13" failed="0" skipped="0">
+<testng-results ignored="1" total="4" passed="3" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-07-09T15:54:09 EET" name="Default suite" finished-at="2025-07-09T15:55:13 EET" duration-ms="64718">
+  <suite started-at="2025-07-15T15:33:41 EET" name="Default suite" finished-at="2025-07-15T15:33:53 EET" duration-ms="11979">
     <groups>
     </groups>
-    <test started-at="2025-07-09T15:54:09 EET" name="Default test" finished-at="2025-07-09T15:55:13 EET" duration-ms="64718">
+    <test started-at="2025-07-15T15:33:41 EET" name="Default test" finished-at="2025-07-15T15:33:53 EET" duration-ms="11979">
       <class name="LoginPage.MyTestCases">
-        <test-method is-config="true" signature="mySetup()[pri:0, instance:LoginPage.MyTestCases@4eed46ee]" started-at="2025-07-09T15:54:09 EET" name="mySetup" finished-at="2025-07-09T15:54:12 EET" duration-ms="2902" status="PASS">
+        <test-method is-config="true" signature="mySetup()[pri:0, instance:LoginPage.MyTestCases@4eed46ee]" started-at="2025-07-15T15:33:41 EET" name="mySetup" finished-at="2025-07-15T15:33:44 EET" duration-ms="2935" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- mySetup -->
-        <test-method signature="Signup()[pri:1, instance:LoginPage.MyTestCases@4eed46ee]" started-at="2025-07-09T15:54:12 EET" name="Signup" finished-at="2025-07-09T15:54:27 EET" duration-ms="15041" status="PASS">
+        <test-method signature="Signup()[pri:1, instance:LoginPage.MyTestCases@4eed46ee]" started-at="2025-07-15T15:33:44 EET" name="Signup" finished-at="2025-07-15T15:33:50 EET" duration-ms="6092" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Signup -->
-        <test-method signature="logout()[pri:2, instance:LoginPage.MyTestCases@4eed46ee]" started-at="2025-07-09T15:54:27 EET" name="logout" finished-at="2025-07-09T15:54:30 EET" duration-ms="2725" status="PASS">
+        <test-method signature="logout()[pri:2, instance:LoginPage.MyTestCases@4eed46ee]" started-at="2025-07-15T15:33:50 EET" name="logout" finished-at="2025-07-15T15:33:51 EET" duration-ms="946" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- logout -->
-        <test-method signature="login()[pri:3, instance:LoginPage.MyTestCases@4eed46ee]" started-at="2025-07-09T15:54:30 EET" name="login" finished-at="2025-07-09T15:54:32 EET" duration-ms="2603" status="PASS">
+        <test-method signature="login()[pri:3, instance:LoginPage.MyTestCases@4eed46ee]" started-at="2025-07-15T15:33:51 EET" name="login" finished-at="2025-07-15T15:33:53 EET" duration-ms="1963" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- login -->
-        <test-method signature="AddToCard()[pri:4, instance:LoginPage.MyTestCases@4eed46ee]" started-at="2025-07-09T15:54:32 EET" name="AddToCard" finished-at="2025-07-09T15:54:38 EET" duration-ms="6220" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- AddToCard -->
-        <test-method signature="AddToCard()[pri:4, instance:LoginPage.MyTestCases@4eed46ee]" started-at="2025-07-09T15:54:38 EET" name="AddToCard" finished-at="2025-07-09T15:54:44 EET" duration-ms="5166" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- AddToCard -->
-        <test-method signature="AddToCard()[pri:4, instance:LoginPage.MyTestCases@4eed46ee]" started-at="2025-07-09T15:54:44 EET" name="AddToCard" finished-at="2025-07-09T15:54:46 EET" duration-ms="2734" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- AddToCard -->
-        <test-method signature="AddToCard()[pri:4, instance:LoginPage.MyTestCases@4eed46ee]" started-at="2025-07-09T15:54:46 EET" name="AddToCard" finished-at="2025-07-09T15:54:51 EET" duration-ms="5082" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- AddToCard -->
-        <test-method signature="AddToCard()[pri:4, instance:LoginPage.MyTestCases@4eed46ee]" started-at="2025-07-09T15:54:51 EET" name="AddToCard" finished-at="2025-07-09T15:54:57 EET" duration-ms="5703" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- AddToCard -->
-        <test-method signature="AddToCard()[pri:4, instance:LoginPage.MyTestCases@4eed46ee]" started-at="2025-07-09T15:54:57 EET" name="AddToCard" finished-at="2025-07-09T15:55:00 EET" duration-ms="3283" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- AddToCard -->
-        <test-method signature="AddToCard()[pri:4, instance:LoginPage.MyTestCases@4eed46ee]" started-at="2025-07-09T15:55:00 EET" name="AddToCard" finished-at="2025-07-09T15:55:05 EET" duration-ms="4417" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- AddToCard -->
-        <test-method signature="AddToCard()[pri:4, instance:LoginPage.MyTestCases@4eed46ee]" started-at="2025-07-09T15:55:05 EET" name="AddToCard" finished-at="2025-07-09T15:55:08 EET" duration-ms="2718" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- AddToCard -->
-        <test-method signature="AddToCard()[pri:4, instance:LoginPage.MyTestCases@4eed46ee]" started-at="2025-07-09T15:55:08 EET" name="AddToCard" finished-at="2025-07-09T15:55:11 EET" duration-ms="3312" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- AddToCard -->
-        <test-method signature="AddToCard()[pri:4, instance:LoginPage.MyTestCases@4eed46ee]" started-at="2025-07-09T15:55:11 EET" name="AddToCard" finished-at="2025-07-09T15:55:13 EET" duration-ms="2547" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- AddToCard -->
       </class> <!-- LoginPage.MyTestCases -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->

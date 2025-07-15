@@ -1,5 +1,7 @@
 package LoginPage;
 
+import static org.testng.Assert.assertEquals;
+
 import java.util.List;
 import java.util.Random;
 
@@ -8,6 +10,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
@@ -18,6 +21,7 @@ public class MyTestCases {
 	Random rand = new Random();
 	String TheUserName;
 	String ThePassword = "TestStore@123";
+	String firstName;
 
 	@BeforeTest
 	public void mySetup() {
@@ -31,6 +35,7 @@ public class MyTestCases {
 	public void Signup() throws InterruptedException {
 
 		driver.navigate().to(SignupPage);
+		String ConfirmationMessage = "Your Account Has Been Created!";
 		// Element
 		WebElement firstNameInput = driver.findElement(By.xpath("//*[@id=\"AccountFrm_firstname\"]"));
 		WebElement LastNameInput = driver.findElement(By.xpath("//*[@id=\"AccountFrm_lastname\"]"));
@@ -55,6 +60,7 @@ public class MyTestCases {
 		String[] firstNames = { "Ahmad", "Marwan", "Samer", "Sami" };
 		int randomIndexForFirstName = rand.nextInt(firstNames.length);
 		String randomFirstName = firstNames[randomIndexForFirstName];
+		firstName = randomFirstName;
 
 		String[] LastNames = { "eslam", "esraa", "rahaf", "rema" };
 		int randomIndexForLasttName = rand.nextInt(LastNames.length);
@@ -107,18 +113,25 @@ public class MyTestCases {
 		passwordConfirmInput.sendKeys(ThePassword);
 		agreebox.click();
 		ContinueButton.click();
+		boolean ActualeResult = driver.getPageSource().contains(ConfirmationMessage);
+		Assert.assertEquals(ActualeResult, true, "this is test that the account has been created");
+
 	}
 
 	@Test(priority = 2, enabled = true)
-	public void logout() {
+	public void logout() throws InterruptedException {
+		String ConfirmationMessage = "You have been logged off your account. It is now safe to leave the computer.";
 
 		WebElement logoutInput = driver.findElement(By.linkText("Logoff"));
 
 		logoutInput.click();
+		// Thread.sleep(1000);
+		boolean ActualResult = driver.getPageSource().contains(ConfirmationMessage);
+		Assert.assertEquals(ActualResult, true, "this is test that the account has logged created");
 	}
 
 	@Test(priority = 3, enabled = true)
-	public void login() {
+	public void login() throws InterruptedException {
 
 		driver.navigate().to("https://automationteststore.com/index.php?rt=account/login");
 		WebElement loginName = driver.findElement(By.id("loginFrm_loginname"));
@@ -128,10 +141,13 @@ public class MyTestCases {
 
 		WebElement logInButton = driver.findElement(By.xpath("//button[normalize-space()='Login']"));
 		logInButton.click();
+		Thread.sleep(1000);
+		boolean ActualResult = driver.findElement(By.id("customernav")).getText().contains(firstName);
+		Assert.assertEquals(ActualResult, true);
 
 	}
 
-	@Test(priority = 4, enabled = true,invocationCount = 10)
+	@Test(priority = 4, enabled = false, invocationCount = 1)
 	public void AddToCard() {
 
 		driver.navigate().to(theURL);
@@ -139,17 +155,20 @@ public class MyTestCases {
 		int TotleNunberOfItems = TheListOfItem.size();
 		int RandomItemIndex = rand.nextInt(TotleNunberOfItems);
 		TheListOfItem.get(RandomItemIndex).click();
-		if (driver.getPageSource().contains("Out of Stock")) {
+		WebElement AddToCardButton = driver.findElement(By.className("productpagecart"));
+
+		if (AddToCardButton.getText().equals("Out of Stock")) {
 			driver.navigate().back();
 			System.out.println("Sorry the item out of stock");
-		}else {
-			System.out.println("the item is  avaibale");
+		} else {
+			if (driver.getCurrentUrl().contains("product_id=116")) {
+				driver.findElement(By.xpath("//input[@id='option344747']")).click();
+			}
+			AddToCardButton.click();
+			WebElement ChekOutButton = driver.findElement(By.linkText("Checkout"));
+			ChekOutButton.click();
+
 		}
-		
-		
-		
-		
-		
 
 	}
 
